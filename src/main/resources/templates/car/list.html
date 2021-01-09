@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org" lang="">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista samochodów</title>
+</head>
+<body>
+<h1>Lista samochodów</h1>
+<table>
+    <tr>
+        <th>Marka</th>
+        <th>Model</th>
+        <th>Typ nadwozia</th>
+        <th>Rocznik</th>
+        <th>Kolor</th>
+        <th>Przebieg</th>
+        <th>Status</th>
+        <th>Kwota(za dzień wypożyczenia)</th>
+        <th>Działanie</th>
+    </tr>
+    <tr th:each="car : ${carList}">
+        <td th:text="${car.brand}"></td>
+        <td th:text="${car.model}"></td>
+        <td th:text="${car.body}"></td>
+        <td th:text="${car.productionYear}"></td>
+        <td th:text="${car.color}"></td>
+        <td th:text="${car.mileage}"></td>
+        <td th:text="${car.status}"></td>
+        <td th:text="${car.rent}"></td>
+        <td><a th:href="@{/car/edit/{id}(id=${car.id})}">Edycja</a>
+        <form th:action="@{/car/delete/{id}(id=${car.id})}" method="post">
+            <input type="submit" th:value="Usuń">
+        </form>
+        </td>
+    </tr>
+</table>
+</body>
+
+</html>

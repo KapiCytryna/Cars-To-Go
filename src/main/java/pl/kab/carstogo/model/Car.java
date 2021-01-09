@@ -1,5 +1,7 @@
 package pl.kab.carstogo.model;
 
+import pl.kab.carstogo.entity.CarEntity;
+
 public class Car {
 
     private Integer id;
@@ -39,6 +41,10 @@ public class Car {
 
     public void setBrand(pl.kab.carstogo.model.Brand brand) {
         this.brand = brand;
+    }
+
+    public CarEntity mapToCarEntity(){
+        return new CarEntity(getBrand(),getModel(),getBody(),getProductionYear(),getColor(),getMileage(),getStatus(),getRent());
     }
 
     public String getModel() {

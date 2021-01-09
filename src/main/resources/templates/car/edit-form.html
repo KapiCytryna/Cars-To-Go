@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org" lang="">
+<head>
+    <meta charset="UTF-8">
+    <title>Formularz samochodu</title>
+</head>
+<style>
+    label {
+        display: block;
+        margin: 10px 0;
+        overflow: hidden;
+    }
+    input {
+        float: right;
+        width: 150px;
+        margin: 0 0 0 5px;
+    }
+    select {
+        float: right;
+        width: 158px;
+        margin: 0 0 0 5px;
+    }
+    button {
+        display: block;
+        width: 50px;
+        margin: 20px auto 0 auto;
+    }
+    fieldset {
+        width: 400px;
+    }
+</style>
+<body>
+<h1>Formularz samochodu</h1>
+<form th:object="${carForm}" th:action="@{/car/edit/{id}(id=${carForm.id})}" method="post">
+    <fieldset>
+    <label>Marka:
+        <select name="brand">
+            <option th:each="brandOpt : ${T(pl.kab.carstogo.model.Brand).values()}"
+                    th:value="${brandOpt}" th:text="${brandOpt}"></option>
+        </select>
+    </label>
+    <br>
+    <label>Model:
+        <input type="text" th:field="*{model}"/>
+    </label>
+    <br>
+    <label>Typ nadwozia:
+        <select name="body">
+            <option th:each="bodyTypeOpt : ${T(pl.kab.carstogo.model.BodyType).values()}"
+                    th:value="${bodyTypeOpt}" th:text="${bodyTypeOpt}"></option>
+        </select>
+    </label>
+    <br>
+    <label>Rocznik:
+        <input type="number" th:field="*{productionYear}"/>
+    </label>
+    <br>
+    <label>Kolor:
+        <input type="text" th:field="*{color}"/>
+    </label>
+    <br>
+    <label>Przebieg:
+        <input type="number" th:field="*{mileage}"/>
+    </label>
+    <br>
+    <label>Status:
+        <select name="status">
+            <option th:each="statusOpt : ${T(pl.kab.carstogo.model.Status).values()}"
+                    th:value="${statusOpt}" th:text="${statusOpt.getDisplayName()}"></option>
+        </select>
+    </label>
+    <br>
+    <label>Kwota(za dzień wypożyczenia):
+        <input type="number" th:field="*{rent}"/>
+    </label>
+    <br>
+    <input type="submit"/>
+    </fieldset>
+</form>
+</body>
+
+</html>
