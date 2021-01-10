@@ -34,7 +34,7 @@ public class BranchController {
         branchService.remove(id);
     }
 
-    @PatchMapping("/{id}")
+ /*   @PatchMapping("/{id}")
     public ResponseEntity patchEmployee(@PathVariable("id") Integer id,
                                    @RequestParam("field") String field,
                                    @RequestParam("value") String value) {
@@ -44,4 +44,6 @@ public class BranchController {
             return new ResponseEntity("Bad format for value/field try again", HttpStatus.BAD_REQUEST);
         }
     }
+
+  */
 }

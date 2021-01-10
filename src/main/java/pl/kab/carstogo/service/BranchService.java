@@ -14,6 +14,7 @@ import java.util.stream.Collectors;
 
 @Service
 public class BranchService {
+    
     private final BranchRepository branchRepository;
 
     @Autowired
@@ -59,7 +60,7 @@ public class BranchService {
         branchRepository.save(branchEntity);
         return branchEntity.mapToBranch();
     }
-
+  
     public Branch patchBranch(Integer id, String field, String value) {
         BranchEntity foundBranch = branchRepository.findById(id).orElseThrow();
         if(field.equalsIgnoreCase("city")){
