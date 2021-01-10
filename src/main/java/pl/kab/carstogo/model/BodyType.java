@@ -6,10 +6,10 @@ public enum BodyType {
     DUAL_COWL,
     FASTBACK,
     HATCHBACK,
-    KABRIOLET,
-    KOMBI,
+    CABRIOLET,
+    COMBI,
     LIFTBACK,
-    LIMUZYNA,
+    LIMO,
     MICROVAN,
     MINIVAN,
     PICK_UP,
@@ -17,9 +17,7 @@ public enum BodyType {
     SEDAN,
     TARGA,
     VAN,
-    TRAMBUS,
-    PIETROBUS,
     AUTOBUS_PRZEGUBOWY,
-    MIKROBUS,
-    AUTOKAR
+    MICROBUS,
+    BUS;
 }
