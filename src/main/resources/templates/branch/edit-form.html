@@ -31,8 +31,8 @@
     }
 </style>
 <body>
-<h1>Formularz samochodu</h1>
-<form th:object="${branchForm}" th:action="@{/car/edit/{id}(id=${branchForm.id})}" method="post">
+<h1>Formularz oddziału</h1>
+<form th:object="${branchForm}" th:action="@{/branch/edit/{id}(id=${branchForm.id})}" method="post">
     <fieldset>
         <label>Miasto:
             <input type="text" th:field="*{city}"/>
