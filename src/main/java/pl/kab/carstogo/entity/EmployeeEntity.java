@@ -2,10 +2,12 @@ package pl.kab.carstogo.entity;
 
 import pl.kab.carstogo.model.Employee;
 
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import java.util.Objects;
 
+@Entity
 public class EmployeeEntity {
     @Id
     @GeneratedValue

@@ -14,12 +14,13 @@ public class Employee extends Person {
         this.position = position;
         this.branch = branch;
     }
+    
     public Employee() {
         super();
     }
 
     public EmployeeEntity mapToEmployeeEntity() {
-        return new EmployeeEntity(position, branch, getFirstName(), getLastName());
+        return new EmployeeEntity(getFirstName(), getLastName(), position, branch);
     }
 
     public String getPosition() {
