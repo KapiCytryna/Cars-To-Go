@@ -11,7 +11,6 @@ import java.util.stream.Collectors;
 
 @Service
 public class BranchService {
-
     private final BranchRepository branchRepository;
 
     @Autowired
@@ -35,7 +34,5 @@ public class BranchService {
     }
 
     public void remove(Integer id) {
-        
     }
-
 }

@@ -1,5 +1,6 @@
 package pl.kab.carstogo.model;
 
+import pl.kab.carstogo.entity.BranchEntity;
 import pl.kab.carstogo.entity.EmployeeEntity;
 
 import java.util.Objects;
@@ -14,12 +15,13 @@ public class Employee extends Person {
         this.position = position;
         this.branch = branch;
     }
+    
     public Employee() {
         super();
     }
 
     public EmployeeEntity mapToEmployeeEntity() {
-        return new EmployeeEntity(getFirstName(), getLastName(), position, branch);
+        return new EmployeeEntity(getFirstName(), getLastName(), position, branch.mapToBranchEntity());
     }
 
     public Position getPosition() {
