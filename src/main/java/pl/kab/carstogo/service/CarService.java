@@ -1,5 +1,6 @@
 package pl.kab.carstogo.service;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import pl.kab.carstogo.entity.CarEntity;
 import pl.kab.carstogo.model.BodyType;
@@ -17,6 +18,7 @@ public class CarService {
 
     private final CarRepository carRepository;
 
+    @Autowired
     public CarService(CarRepository carRepository) {
         this.carRepository = carRepository;
     }
@@ -36,7 +38,7 @@ public class CarService {
         return carRepository.findById(id).orElseThrow().mapToCar();
     }
 
-    public void remove (Integer id){
+    public void remove (Integer id) {
         carRepository.deleteById(id);
     }
 

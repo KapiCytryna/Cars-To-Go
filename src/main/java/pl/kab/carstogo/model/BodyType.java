@@ -10,7 +10,7 @@ public enum BodyType {
     KOMBI,
     LIFTBACK,
     LIMUZYNA,
-    MIKROVAN,
+    MICROVAN,
     MINIVAN,
     PICK_UP,
     ROADSTER,
@@ -21,6 +21,5 @@ public enum BodyType {
     PIETROBUS,
     AUTOBUS_PRZEGUBOWY,
     MIKROBUS,
-    OMNIBUS,
     AUTOKAR
 }
