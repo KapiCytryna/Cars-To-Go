@@ -1,5 +1,6 @@
 package pl.kab.carstogo.model;
 
+import pl.kab.carstogo.entity.BranchEntity;
 import pl.kab.carstogo.entity.EmployeeEntity;
 
 import java.util.Objects;
