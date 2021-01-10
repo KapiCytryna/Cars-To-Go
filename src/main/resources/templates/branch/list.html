@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org" lang="">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista oddziałów</title>
+</head>
+<body>
+<h1>Lista oddziałów</h1>
+<table>
+    <tr>
+        <th>Id</th>
+        <th>Miasto</th>
+        <th>Adres</th>
+        <th>Pracownicy</th>
+        <th>Samochody</th>
+    </tr>
+    <tr th:each="branch : ${branchList}">
+        <td th:text="${branch.id}"></td>
+        <td th:text="${branch.city}"></td>
+        <td th:text="${branch.address}"></td>
+        <td th:text="${branch.employees.size}"></td>
+        <td th:text="${branch.cars.size}"></td>
+        <td><a th:href="@{/branch/edit/{id}(id=${branch.id})}">Edycja</a>
+        <form th:action="@{/branch/delete/{id}(id=${branch.id})}" method="post">
+            <input type="submit" th:value="Usuń">
+        </form>
+        </td>
+    </tr>
+</table>
+</body>
+
+</html>
