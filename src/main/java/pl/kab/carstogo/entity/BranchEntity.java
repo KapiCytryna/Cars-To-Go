@@ -1,29 +1,42 @@
-package pl.kab.carstogo.model;
+package pl.kab.carstogo.entity;
 
-import pl.kab.carstogo.entity.BranchEntity;
+import pl.kab.carstogo.model.Branch;
+import pl.kab.carstogo.model.Car;
+import pl.kab.carstogo.model.Employee;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import java.util.List;
 import java.util.Objects;
 
-public class Branch {
+@Entity
+public class BranchEntity {
 
+    @Id
+    @GeneratedValue
     private Integer id;
     private String city;
     private String address;
+    @OneToMany
     private List<Employee> employees;
+    @OneToMany
     private List<Car> cars;
 
-    public Branch(String city, String address, List<Employee> employees, List<Car> cars) {
+    public BranchEntity() {}
+
+    public BranchEntity(String city, String address, List<Employee> employees, List<Car> cars) {
         this.city = city;
         this.address = address;
         this.employees = employees;
         this.cars = cars;
     }
 
-    public Branch() {}
-
-    public BranchEntity mapToBranchEntity(){
-        return new BranchEntity(city,address,employees,cars);
+    public Branch mapToBranch() {
+        Branch branch = new Branch(city,address,employees,cars);
+        branch.setId(id);
+        return branch;
     }
 
     public Integer getId() {
@@ -70,8 +83,8 @@ public class Branch {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Branch branch = (Branch) o;
-        return Objects.equals(id, branch.id) && Objects.equals(city, branch.city) && Objects.equals(address, branch.address) && Objects.equals(employees, branch.employees) && Objects.equals(cars, branch.cars);
+        BranchEntity that = (BranchEntity) o;
+        return Objects.equals(id, that.id) && Objects.equals(city, that.city) && Objects.equals(address, that.address) && Objects.equals(employees, that.employees) && Objects.equals(cars, that.cars);
     }
 
     @Override

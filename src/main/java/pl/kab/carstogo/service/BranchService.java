@@ -1,7 +1,9 @@
 package pl.kab.carstogo.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import pl.kab.carstogo.entity.BranchEntity;
 import pl.kab.carstogo.model.Branch;
+import pl.kab.carstogo.repository.BranchRepository;
 
 import java.util.List;
 import java.util.stream.Collectors;
