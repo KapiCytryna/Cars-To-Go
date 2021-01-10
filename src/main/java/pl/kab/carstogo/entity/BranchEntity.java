@@ -1,8 +1,6 @@
 package pl.kab.carstogo.entity;
 
 import pl.kab.carstogo.model.Branch;
-import pl.kab.carstogo.model.Car;
-import pl.kab.carstogo.model.Employee;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -10,6 +8,7 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import java.util.List;
 import java.util.Objects;
+import java.util.stream.Collectors;
 
 @Entity
 public class BranchEntity {
@@ -19,22 +18,23 @@ public class BranchEntity {
     private Integer id;
     private String city;
     private String address;
+
+    @OneToMany(mappedBy = "branch")
+    private List<EmployeeEntity> employees;
     @OneToMany
-    private List<Employee> employees;
-    @OneToMany
-    private List<Car> cars;
+    private List<CarEntity> cars;
 
     public BranchEntity() {}
 
-    public BranchEntity(String city, String address, List<Employee> employees, List<Car> cars) {
+    public BranchEntity(String city, String address) {
         this.city = city;
         this.address = address;
-        this.employees = employees;
-        this.cars = cars;
     }
 
     public Branch mapToBranch() {
-        Branch branch = new Branch(city,address,employees,cars);
+        Branch branch = new Branch(city,address,
+                employees.stream().map(EmployeeEntity::mapToEmployee).collect(Collectors.toList()),
+                cars.stream().map(CarEntity::mapToCar).collect(Collectors.toList()));
         branch.setId(id);
         return branch;
     }
@@ -63,19 +63,19 @@ public class BranchEntity {
         this.address = address;
     }
 
-    public List<Employee> getEmployees() {
+    public List<EmployeeEntity> getEmployees() {
         return employees;
     }
 
-    public void setEmployees(List<Employee> employees) {
+    public void setEmployees(List<EmployeeEntity> employees) {
         this.employees = employees;
     }
 
-    public List<Car> getCars() {
+    public List<CarEntity> getCars() {
         return cars;
     }
 
-    public void setCars(List<Car> cars) {
+    public void setCars(List<CarEntity> cars) {
         this.cars = cars;
     }
 

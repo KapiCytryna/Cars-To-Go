@@ -1,11 +1,12 @@
 package pl.kab.carstogo.entity;
 
 import pl.kab.carstogo.model.Employee;
+import pl.kab.carstogo.model.Position;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
+import javax.persistence.ManyToOne;
 import java.util.Objects;
 
 @Entity
@@ -15,14 +16,15 @@ public class EmployeeEntity {
     private Integer id;
     private String firstName;
     private String lastName;
-    private String position;
-    private String branch;
+    private Position position;
+    @ManyToOne
+    private BranchEntity branch;
 
     public EmployeeEntity() {
 
     }
 
-    public EmployeeEntity(String firstName, String lastName, String position, String branch) {
+    public EmployeeEntity(String firstName, String lastName, Position position, BranchEntity branch) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.position = position;
@@ -30,7 +32,7 @@ public class EmployeeEntity {
     }
 
     public Employee mapToEmployee() {
-        Employee employee = new Employee(firstName, lastName, position, branch);
+        Employee employee = new Employee(firstName, lastName, position, branch.mapToBranch());
         employee.setId(id);
         return employee;
     }
@@ -59,19 +61,19 @@ public class EmployeeEntity {
         this.lastName = lastName;
     }
 
-    public String getPosition() {
+    public Position getPosition() {
         return position;
     }
 
-    public void setPosition(String position) {
+    public void setPosition(Position position) {
         this.position = position;
     }
 
-    public String getBranch() {
+    public BranchEntity getBranch() {
         return branch;
     }
 
-    public void setBranch(String branch) {
+    public void setBranch(BranchEntity branch) {
         this.branch = branch;
     }
 

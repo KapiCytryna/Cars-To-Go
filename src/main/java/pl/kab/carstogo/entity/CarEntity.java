@@ -35,7 +35,7 @@ public class CarEntity {
 
     public CarEntity() {}
 
-    public CarEntity(pl.kab.carstogo.model.Brand brand, String model, BodyType body, Integer productionYear, String color, Integer mileage, Status status, Double rent) {
+    public CarEntity(Brand brand, String model, BodyType body, Integer productionYear, String color, Integer mileage, Status status, Double rent) {
         this.brand = brand;
         this.model = model;
         this.body = body;

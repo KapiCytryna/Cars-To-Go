@@ -1,6 +1,7 @@
 package pl.kab.carstogo.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import pl.kab.carstogo.entity.BranchEntity;
 import pl.kab.carstogo.model.Branch;
 import pl.kab.carstogo.repository.BranchRepository;
@@ -8,6 +9,7 @@ import pl.kab.carstogo.repository.BranchRepository;
 import java.util.List;
 import java.util.stream.Collectors;
 
+@Service
 public class BranchService {
     private final BranchRepository branchRepository;
 
@@ -32,6 +34,5 @@ public class BranchService {
     }
 
     public void remove(Integer id) {
-
     }
 }
