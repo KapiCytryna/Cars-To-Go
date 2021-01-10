@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org" lang="">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista pracowników</title>
+</head>
+<body>
+<h1>Lista pracowników</h1>
+<table>
+    <tr>
+        <th>Imię</th>
+        <th>Nazwisko</th>
+        <th>Stanowisko</th>
+        <th>Oddział</th>
+    </tr>
+    <tr th:each="employee : ${employeeList}">
+        <td th:text="${employee.firstName}"></td>
+        <td th:text="${employee.lastName}"></td>
+        <td th:text="${employee.position}"></td>
+        <td th:text="${employee.branch}"></td>
+        <td><a th:href="@{/car/edit/{id}(id=${employee.id})}">Edycja</a>
+        <form th:action="@{/car/delete/{id}(id=${employee.id})}" method="post">
+            <input type="submit" th:value="Usuń">
+        </form>
+        </td>
+    </tr>
+</table>
+</body>
+
+</html>
