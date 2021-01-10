@@ -57,4 +57,8 @@ public class EmployeeService {
         employeeRepository.save(employeeEntity);
         return employeeEntity.mapToEmployee();
     }
+
+    public void remove(Integer id) {
+        employeeRepository.deleteById(id);
+    }
 }
