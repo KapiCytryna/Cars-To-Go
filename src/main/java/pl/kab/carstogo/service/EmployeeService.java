@@ -3,8 +3,10 @@ package pl.kab.carstogo.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Service;
+import pl.kab.carstogo.entity.BranchEntity;
 import pl.kab.carstogo.entity.EmployeeEntity;
 import pl.kab.carstogo.model.Employee;
+import pl.kab.carstogo.repository.BranchRepository;
 import pl.kab.carstogo.repository.EmployeeRepository;
 
 import java.util.List;
@@ -19,12 +21,15 @@ public class EmployeeService {
     private final CarService carService;
     @Lazy
     private final BranchService branchService;
+    @Lazy
+    private final BranchRepository branchRepository;
 
     @Autowired
-    public EmployeeService(EmployeeRepository employeeRepository, CarService carService, BranchService branchService) {
+    public EmployeeService(EmployeeRepository employeeRepository, CarService carService, BranchService branchService, BranchRepository branchRepository) {
         this.employeeRepository = employeeRepository;
         this.carService = carService;
         this.branchService = branchService;
+        this.branchRepository = branchRepository;
     }
 
     public List<Employee> findAll() {
@@ -36,6 +41,11 @@ public class EmployeeService {
     public Employee addEmployee(Employee employee) {
         EmployeeEntity employeeEntity = employeeRepository
                 .save(employee.mapToEmployeeEntity());
+
+        BranchEntity branchEntity = branchRepository.findById(employeeEntity.getBranch().getId()).orElseThrow();
+        branchEntity.getEmployees().add(employeeEntity);
+        branchRepository.save(branchEntity);
+
         return employeeEntity.mapToEmployee();
     }
 
