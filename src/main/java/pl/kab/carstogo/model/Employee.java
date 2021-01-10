@@ -6,10 +6,10 @@ import java.util.Objects;
 
 public class Employee extends Person {
 
-    private String position;
-    private String branch;
+    private Position position;
+    private Branch branch;
 
-    public Employee(String firstName, String lastName, String position, String branch) {
+    public Employee(String firstName, String lastName, Position position, Branch branch) {
         super(firstName, lastName);
         this.position = position;
         this.branch = branch;
@@ -19,22 +19,22 @@ public class Employee extends Person {
     }
 
     public EmployeeEntity mapToEmployeeEntity() {
-        return new EmployeeEntity(position, branch, getFirstName(), getLastName());
+        return new EmployeeEntity(getFirstName(), getLastName(), position, branch);
     }
 
-    public String getPosition() {
+    public Position getPosition() {
         return position;
     }
 
-    public void setPosition(String position) {
+    public void setPosition(Position position) {
         this.position = position;
     }
 
-    public String getBranch() {
+    public Branch getBranch() {
         return branch;
     }
 
-    public void setBranch(String branch) {
+    public void setBranch(Branch branch) {
         this.branch = branch;
     }
 
