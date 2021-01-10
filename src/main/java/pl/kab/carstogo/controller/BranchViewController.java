@@ -1,11 +1,10 @@
 package pl.kab.carstogo.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import pl.kab.carstogo.model.Branch;
-import pl.kab.carstogo.model.Car;
 import pl.kab.carstogo.service.BranchService;
 
 @Controller
@@ -13,14 +12,14 @@ import pl.kab.carstogo.service.BranchService;
 public class BranchViewController {
 
     private final BranchService branchService;
-
+    @Autowired
     public BranchViewController(BranchService branchService) {
         this.branchService = branchService;
     }
 
     @GetMapping("/all")
     public String allBranches(final Model model) {
-        model.addAttribute("Brances", branchService.findAll());
+        model.addAttribute("branchList", branchService.findAll());
         return "branch/list";
     }
 
@@ -31,7 +30,7 @@ public class BranchViewController {
     }
 
     @PostMapping("/add")
-    public String addBranchFromProcess(@ModelAttribute("BranchForm") Branch branch) {
+    public String addBranchFromProcess(@ModelAttribute("branchForm") Branch branch) {
         branchService.addBranch(branch);
         return "redirect:/branch/all";
     }
