@@ -17,14 +17,14 @@ public class EmployeeService {
     private final EmployeeRepository employeeRepository;
     @Lazy
     private final CarService carService;
-    //@Lazy
-    //private final BranchService branchService;
+    @Lazy
+    private final BranchService branchService;
 
     @Autowired
     public EmployeeService(EmployeeRepository employeeRepository, CarService carService, BranchService branchService) {
         this.employeeRepository = employeeRepository;
         this.carService = carService;
-        //this.branchService = branchService;
+        this.branchService = branchService;
     }
 
     public List<Employee> findAll() {
