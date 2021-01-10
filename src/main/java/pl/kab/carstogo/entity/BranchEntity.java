@@ -18,6 +18,7 @@ public class BranchEntity {
     private Integer id;
     private String city;
     private String address;
+
     @OneToMany(mappedBy = "branch")
     private List<EmployeeEntity> employees;
     @OneToMany
@@ -37,7 +38,6 @@ public class BranchEntity {
         branch.setId(id);
         return branch;
     }
-
 
     public Integer getId() {
         return id;

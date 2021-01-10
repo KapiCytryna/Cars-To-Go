@@ -14,6 +14,7 @@ public class Employee extends Person {
         this.position = position;
         this.branch = branch;
     }
+    
     public Employee() {
         super();
     }
