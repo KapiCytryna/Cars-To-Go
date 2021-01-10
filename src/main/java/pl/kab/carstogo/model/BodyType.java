@@ -19,5 +19,5 @@ public enum BodyType {
     VAN,
     AUTOBUS_PRZEGUBOWY,
     MICROBUS,
-    AUTOKAR;
+    BUS;
 }

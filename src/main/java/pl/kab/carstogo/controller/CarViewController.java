@@ -10,6 +10,7 @@ import pl.kab.carstogo.service.CarService;
 @Controller
 @RequestMapping("/car")
 public class CarViewController {
+
     private final CarService carService;
 
     @Autowired

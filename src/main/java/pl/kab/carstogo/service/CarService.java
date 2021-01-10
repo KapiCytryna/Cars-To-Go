@@ -38,7 +38,7 @@ public class CarService {
         return carRepository.findById(id).orElseThrow().mapToCar();
     }
 
-    public void remove (Integer id){
+    public void remove (Integer id) {
         carRepository.deleteById(id);
     }
 
