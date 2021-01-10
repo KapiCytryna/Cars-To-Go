@@ -3,10 +3,7 @@ package pl.kab.carstogo.entity;
 import pl.kab.carstogo.model.Employee;
 import pl.kab.carstogo.model.Position;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
 import java.util.Objects;
 
 @Entity
@@ -18,6 +15,7 @@ public class EmployeeEntity {
     private String lastName;
     private Position position;
     @ManyToOne
+    @JoinColumn (name = "branchId")
     private BranchEntity branch;
 
     public EmployeeEntity() {
