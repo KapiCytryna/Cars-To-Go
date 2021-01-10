@@ -60,4 +60,15 @@ public class BranchService {
         branchRepository.save(branchEntity);
         return branchEntity.mapToBranch();
     }
+  
+    public Branch patchBranch(Integer id, String field, String value) {
+        BranchEntity foundBranch = branchRepository.findById(id).orElseThrow();
+        if(field.equalsIgnoreCase("city")){
+            foundBranch.setCity(value);
+        } else if (field.equalsIgnoreCase("address")) {
+            foundBranch.setAddress(value);
+        }
+        branchRepository.save(foundBranch);
+        return foundBranch.mapToBranch();
+    }
 }

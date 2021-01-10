@@ -3,10 +3,8 @@ package pl.kab.carstogo.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import pl.kab.carstogo.model.Branch;
-import pl.kab.carstogo.model.Car;
 import pl.kab.carstogo.service.BranchService;
 
 @Controller
@@ -14,7 +12,6 @@ import pl.kab.carstogo.service.BranchService;
 public class BranchViewController {
 
     private final BranchService branchService;
-
     @Autowired
     public BranchViewController(BranchService branchService) {
         this.branchService = branchService;
@@ -22,7 +19,7 @@ public class BranchViewController {
 
     @GetMapping("/all")
     public String allBranches(final Model model) {
-        model.addAttribute("Branches", branchService.findAll());
+        model.addAttribute("branchList", branchService.findAll());
         return "branch/list";
     }
 
