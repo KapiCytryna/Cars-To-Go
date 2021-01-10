@@ -22,8 +22,8 @@ public class Branch {
 
     public Branch() {}
 
-    public BranchEntity mapToBranchEntity(){
-        return new BranchEntity(city,address,employees,cars);
+    public BranchEntity mapToBranchEntity() {
+        return new BranchEntity(city,address);
     }
 
     public Integer getId() {

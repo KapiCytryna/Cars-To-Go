@@ -19,7 +19,7 @@ public class Employee extends Person {
     }
 
     public EmployeeEntity mapToEmployeeEntity() {
-        return new EmployeeEntity(getFirstName(), getLastName(), position, branch);
+        return new EmployeeEntity(getFirstName(), getLastName(), position, branch.mapToBranchEntity());
     }
 
     public Position getPosition() {
