@@ -44,13 +44,13 @@
     <br>
     <label>Stanowisko:
         <select name="position">
-            <option th:each="positionOpt : ${T(pl.kab.carstogo.model.Position).values()}"
+            <option th:each="positionOpt : ${T(pl.kab.carstogo.model.enums.Position).values()}"
                     th:value="${positionOpt}" th:text="${positionOpt}"></option>
         </select>
     </label>
     <br>
     <label>Oddział:
-        <input type="number" th:field="*{branch}"/>
+        <input type="number" th:field="*{branchId}"/>
     </label>
     <br>
     <input type="submit"/>

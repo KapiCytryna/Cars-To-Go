@@ -1,4 +1,4 @@
-package pl.kab.carstogo.controller;
+package pl.kab.carstogo.controller.view;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

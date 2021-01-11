@@ -1,7 +1,7 @@
 package pl.kab.carstogo.model;
 
-import pl.kab.carstogo.entity.BranchEntity;
 import pl.kab.carstogo.entity.EmployeeEntity;
+import pl.kab.carstogo.model.enums.Position;
 
 import java.util.Objects;
 
@@ -21,7 +21,9 @@ public class Employee extends Person {
     }
 
     public EmployeeEntity mapToEmployeeEntity() {
-        return new EmployeeEntity(getFirstName(), getLastName(), position, branch.mapToBranchEntity());
+        EmployeeEntity employeeEntity = new EmployeeEntity(getFirstName(), getLastName(), position);
+        employeeEntity.setBranch(branch.mapToBranchEntity());
+        return employeeEntity;
     }
 
     public Position getPosition() {

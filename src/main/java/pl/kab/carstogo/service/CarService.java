@@ -3,10 +3,10 @@ package pl.kab.carstogo.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import pl.kab.carstogo.entity.CarEntity;
-import pl.kab.carstogo.model.BodyType;
-import pl.kab.carstogo.model.Brand;
 import pl.kab.carstogo.model.Car;
-import pl.kab.carstogo.model.Status;
+import pl.kab.carstogo.model.enums.BodyType;
+import pl.kab.carstogo.model.enums.Brand;
+import pl.kab.carstogo.model.enums.Status;
 import pl.kab.carstogo.repository.CarRepository;
 
 import java.util.List;
@@ -35,8 +35,10 @@ public class CarService {
     }
 
     public Car findByID(Integer id) {
-        return carRepository.findById(id).orElseThrow().mapToCar();
+        return findEntityById(id).mapToCar();
     }
+
+    public CarEntity findEntityById(Integer id) {return carRepository.findById(id).orElseThrow();}
 
     public void remove (Integer id) {
         carRepository.deleteById(id);

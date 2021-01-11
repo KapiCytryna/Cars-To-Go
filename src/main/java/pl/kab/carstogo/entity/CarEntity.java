@@ -1,9 +1,9 @@
 package pl.kab.carstogo.entity;
 
-import pl.kab.carstogo.model.BodyType;
-import pl.kab.carstogo.model.Brand;
 import pl.kab.carstogo.model.Car;
-import pl.kab.carstogo.model.Status;
+import pl.kab.carstogo.model.enums.BodyType;
+import pl.kab.carstogo.model.enums.Brand;
+import pl.kab.carstogo.model.enums.Status;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

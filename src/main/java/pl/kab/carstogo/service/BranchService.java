@@ -8,6 +8,7 @@ import pl.kab.carstogo.model.Car;
 import pl.kab.carstogo.model.Employee;
 import pl.kab.carstogo.repository.BranchRepository;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -29,12 +30,18 @@ public class BranchService {
     }
 
     public Branch addBranch(Branch branch){
-        BranchEntity branchEntity = branchRepository.save(branch.mapToBranchEntity());
-        return branchEntity.mapToBranch();
+        BranchEntity branchEntity = new BranchEntity(branch.getCity(),branch.getAddress());
+        branchEntity.setCars(new ArrayList<>());
+        branchEntity.setEmployees(new ArrayList<>());
+        return branchRepository.save(branchEntity).mapToBranch();
     }
 
     public Branch findByID(Integer id) {
-        return branchRepository.findById(id).orElseThrow().mapToBranch();
+        return findEntityByID(id).mapToBranch();
+    }
+
+    public BranchEntity findEntityByID(Integer id){
+        return branchRepository.findById(id).orElseThrow();
     }
 
     public void remove(Integer id) {

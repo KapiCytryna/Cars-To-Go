@@ -1,6 +1,9 @@
 package pl.kab.carstogo.model;
 
 import pl.kab.carstogo.entity.CarEntity;
+import pl.kab.carstogo.model.enums.BodyType;
+import pl.kab.carstogo.model.enums.Brand;
+import pl.kab.carstogo.model.enums.Status;
 
 public class Car {
 
@@ -39,7 +42,7 @@ public class Car {
         return brand;
     }
 
-    public void setBrand(pl.kab.carstogo.model.Brand brand) {
+    public void setBrand(Brand brand) {
         this.brand = brand;
     }
 

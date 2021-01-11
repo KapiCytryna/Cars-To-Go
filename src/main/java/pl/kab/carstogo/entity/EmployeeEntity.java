@@ -1,7 +1,7 @@
 package pl.kab.carstogo.entity;
 
 import pl.kab.carstogo.model.Employee;
-import pl.kab.carstogo.model.Position;
+import pl.kab.carstogo.model.enums.Position;
 
 import javax.persistence.*;
 import java.util.Objects;
@@ -22,11 +22,10 @@ public class EmployeeEntity {
 
     }
 
-    public EmployeeEntity(String firstName, String lastName, Position position, BranchEntity branch) {
+    public EmployeeEntity(String firstName, String lastName, Position position) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.position = position;
-        this.branch = branch;
     }
 
     public Employee mapToEmployee() {

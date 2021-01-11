@@ -1,4 +1,4 @@
-package pl.kab.carstogo.model;
+package pl.kab.carstogo.model.enums;
 
 public enum Position {
     EMPLOYEE,

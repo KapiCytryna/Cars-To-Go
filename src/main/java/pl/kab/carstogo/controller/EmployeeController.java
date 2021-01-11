@@ -2,6 +2,7 @@ package pl.kab.carstogo.controller;
 
 import org.springframework.web.bind.annotation.*;
 import pl.kab.carstogo.model.Employee;
+import pl.kab.carstogo.model.command.CreateEmployeeCommand;
 import pl.kab.carstogo.service.EmployeeService;
 
 import java.util.List;
@@ -27,7 +28,7 @@ public class EmployeeController {
     }
 
     @PostMapping
-    public Employee createOwner(@RequestBody final Employee employee) {
+    public Employee createOwner(@RequestBody final CreateEmployeeCommand employee) {
         return employeeService.addEmployee(employee);
     }
 

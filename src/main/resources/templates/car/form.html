@@ -36,7 +36,7 @@
     <fieldset>
     <label>Marka:
         <select name="brand">
-            <option th:each="brandOpt : ${T(pl.kab.carstogo.model.Brand).values()}"
+            <option th:each="brandOpt : ${T(pl.kab.carstogo.model.enums.Brand).values()}"
                     th:value="${brandOpt}" th:text="${brandOpt}"></option>
         </select>
     </label>
@@ -47,7 +47,7 @@
     <br>
     <label>Typ nadwozia:
         <select name="body">
-            <option th:each="bodyTypeOpt : ${T(pl.kab.carstogo.model.BodyType).values()}"
+            <option th:each="bodyTypeOpt : ${T(pl.kab.carstogo.model.enums.BodyType).values()}"
                     th:value="${bodyTypeOpt}" th:text="${bodyTypeOpt}"></option>
         </select>
     </label>
@@ -66,7 +66,7 @@
     <br>
     <label>Status:
         <select name="status">
-            <option th:each="statusOpt : ${T(pl.kab.carstogo.model.Status).values()}"
+            <option th:each="statusOpt : ${T(pl.kab.carstogo.model.enums.Status).values()}"
                     th:value="${statusOpt}" th:text="${statusOpt.getDisplayName()}"></option>
         </select>
     </label>

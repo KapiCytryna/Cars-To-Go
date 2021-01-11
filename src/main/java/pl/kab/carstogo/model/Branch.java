@@ -4,6 +4,7 @@ import pl.kab.carstogo.entity.BranchEntity;
 
 import java.util.List;
 import java.util.Objects;
+import java.util.stream.Collectors;
 
 public class Branch {
 
@@ -23,7 +24,10 @@ public class Branch {
     public Branch() {}
 
     public BranchEntity mapToBranchEntity() {
-        return new BranchEntity(city,address);
+        BranchEntity branchEntity = new BranchEntity(city,address);
+        branchEntity.setEmployees(employees.stream().map(Employee::mapToEmployeeEntity).collect(Collectors.toList()));
+        branchEntity.setCars(cars.stream().map(Car::mapToCarEntity).collect(Collectors.toList()));
+        return branchEntity;
     }
 
     public Integer getId() {
