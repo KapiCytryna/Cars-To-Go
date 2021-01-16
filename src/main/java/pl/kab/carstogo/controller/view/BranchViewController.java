@@ -1,4 +1,4 @@
-package pl.kab.carstogo.controller;
+package pl.kab.carstogo.controller.view;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -31,7 +31,8 @@ public class BranchViewController {
 
     @PostMapping("/add")
     public String addBranchFromProcess(@ModelAttribute("branchForm") Branch branch) {
-        branchService.addBranch(branch);
+        //branchService.addBranch(branch);
+        branchService.saveBranch(branch.getCity(),branch.getAddress());
         return "redirect:/branch/all";
     }
 

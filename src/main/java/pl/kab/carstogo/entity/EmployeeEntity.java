@@ -1,7 +1,7 @@
 package pl.kab.carstogo.entity;
 
 import pl.kab.carstogo.model.Employee;
-import pl.kab.carstogo.model.Position;
+import pl.kab.carstogo.model.enums.Position;
 
 import javax.persistence.*;
 import java.util.Objects;
@@ -22,15 +22,14 @@ public class EmployeeEntity {
 
     }
 
-    public EmployeeEntity(String firstName, String lastName, Position position, BranchEntity branch) {
+    public EmployeeEntity(String firstName, String lastName, Position position) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.position = position;
-        this.branch = branch;
     }
 
     public Employee mapToEmployee() {
-        Employee employee = new Employee(firstName, lastName, position, branch.mapToBranch());
+        Employee employee = new Employee(firstName, lastName, position);
         employee.setId(id);
         return employee;
     }
@@ -82,13 +81,12 @@ public class EmployeeEntity {
         EmployeeEntity employeeEntity = (EmployeeEntity) obj;
         return Objects.equals(id, employeeEntity.id) &&
                 Objects.equals(firstName, employeeEntity.firstName) &&
-                Objects.equals(lastName, employeeEntity.lastName) &&
-                Objects.equals(branch, employeeEntity.branch) &&
+                Objects.equals(lastName, employeeEntity.lastName)  &&
                 Objects.equals(position, employeeEntity.position);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, firstName, lastName, branch, position);
+        return Objects.hash(id, firstName, lastName, position);
     }
 }

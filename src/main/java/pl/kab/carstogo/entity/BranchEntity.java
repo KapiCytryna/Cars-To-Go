@@ -6,6 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
@@ -29,6 +30,8 @@ public class BranchEntity {
     public BranchEntity(String city, String address) {
         this.city = city;
         this.address = address;
+        employees = Collections.emptyList();
+        cars = Collections.emptyList();
     }
 
     public Branch mapToBranch() {

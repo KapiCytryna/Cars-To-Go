@@ -44,7 +44,7 @@
         <br>
         <label>Stanowisko:
             <select name="position">
-                <option th:each="positionOpt : ${T(pl.kab.carstogo.model.Position).values()}"
+                <option th:each="positionOpt : ${T(pl.kab.carstogo.model.enums.Position).values()}"
                         th:value="${positionOpt}" th:text="${positionOpt}"></option>
             </select>
         </label>

@@ -12,13 +12,12 @@
         <th>Imię</th>
         <th>Nazwisko</th>
         <th>Stanowisko</th>
-        <th>Oddział</th>
+        <th>Działanie</th>
     </tr>
     <tr th:each="employee : ${employeeList}">
         <td th:text="${employee.firstName}"></td>
         <td th:text="${employee.lastName}"></td>
         <td th:text="${employee.position}"></td>
-        <td th:text="${employee.branch}"></td>
         <td><a th:href="@{/car/edit/{id}(id=${employee.id})}">Edycja</a>
         <form th:action="@{/car/delete/{id}(id=${employee.id})}" method="post">
             <input type="submit" th:value="Usuń">

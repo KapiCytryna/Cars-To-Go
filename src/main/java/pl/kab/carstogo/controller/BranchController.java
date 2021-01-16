@@ -1,8 +1,6 @@
 package pl.kab.carstogo.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import pl.kab.carstogo.model.Branch;
 import pl.kab.carstogo.service.BranchService;
@@ -34,16 +32,4 @@ public class BranchController {
         branchService.remove(id);
     }
 
- /*   @PatchMapping("/{id}")
-    public ResponseEntity patchEmployee(@PathVariable("id") Integer id,
-                                   @RequestParam("field") String field,
-                                   @RequestParam("value") String value) {
-        try {
-            return new ResponseEntity(branchService.patchBranch(id, field, value), HttpStatus.ACCEPTED);
-        } catch (NumberFormatException e) {
-            return new ResponseEntity("Bad format for value/field try again", HttpStatus.BAD_REQUEST);
-        }
-    }
-
-  */
 }
