@@ -29,7 +29,7 @@ public class EmployeeEntity {
     }
 
     public Employee mapToEmployee() {
-        Employee employee = new Employee(firstName, lastName, position, branch.mapToBranch());
+        Employee employee = new Employee(firstName, lastName, position);
         employee.setId(id);
         return employee;
     }
@@ -81,13 +81,12 @@ public class EmployeeEntity {
         EmployeeEntity employeeEntity = (EmployeeEntity) obj;
         return Objects.equals(id, employeeEntity.id) &&
                 Objects.equals(firstName, employeeEntity.firstName) &&
-                Objects.equals(lastName, employeeEntity.lastName) &&
-                Objects.equals(branch, employeeEntity.branch) &&
+                Objects.equals(lastName, employeeEntity.lastName)  &&
                 Objects.equals(position, employeeEntity.position);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, firstName, lastName, branch, position);
+        return Objects.hash(id, firstName, lastName, position);
     }
 }

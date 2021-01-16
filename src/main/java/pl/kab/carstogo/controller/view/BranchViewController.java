@@ -31,7 +31,8 @@ public class BranchViewController {
 
     @PostMapping("/add")
     public String addBranchFromProcess(@ModelAttribute("branchForm") Branch branch) {
-        branchService.addBranch(branch);
+        //branchService.addBranch(branch);
+        branchService.saveBranch(branch.getCity(),branch.getAddress());
         return "redirect:/branch/all";
     }
 

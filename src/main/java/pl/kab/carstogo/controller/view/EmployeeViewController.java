@@ -32,7 +32,8 @@ public class EmployeeViewController {
 
     @PostMapping("/add")
     public String addEmployeeFormProcess(@ModelAttribute("employeeForm") CreateEmployeeCommand employee) {
-        employeeService.addEmployee(employee);
+        //employeeService.addEmployee(employee);
+        employeeService.saveEmployee(employee.getFirstName(),employee.getLastName(),employee.getPosition(),employee.getBranchId());
         return "redirect:/employee/all";
     }
 

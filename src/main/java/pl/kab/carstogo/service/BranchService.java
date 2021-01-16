@@ -7,6 +7,7 @@ import pl.kab.carstogo.model.Branch;
 import pl.kab.carstogo.model.Car;
 import pl.kab.carstogo.model.Employee;
 import pl.kab.carstogo.repository.BranchRepository;
+import pl.kab.carstogo.repository.CarRepository;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,10 +18,12 @@ import java.util.stream.Collectors;
 public class BranchService {
     
     private final BranchRepository branchRepository;
+    private final CarRepository carRepository;
 
     @Autowired
-    public BranchService(BranchRepository branchRepository) {
+    public BranchService(BranchRepository branchRepository, CarRepository carRepository) {
         this.branchRepository = branchRepository;
+        this.carRepository = carRepository;
     }
 
     public List<Branch> findAll(){
@@ -29,10 +32,21 @@ public class BranchService {
                 .collect(Collectors.toList());
     }
 
+    public void saveBranch(String city, String address){
+        BranchEntity branch = new BranchEntity(city, address);
+        branchRepository.save(branch);
+    }
+
     public Branch addBranch(Branch branch){
         BranchEntity branchEntity = new BranchEntity(branch.getCity(),branch.getAddress());
         branchEntity.setCars(new ArrayList<>());
         branchEntity.setEmployees(new ArrayList<>());
+        return branchRepository.save(branchEntity).mapToBranch();
+    }
+
+    public Branch addCarToBranch(Integer id, Integer carId){
+        BranchEntity branchEntity = branchRepository.findById(id).orElseThrow();
+        branchEntity.getCars().add(carRepository.findById(carId).orElseThrow());
         return branchRepository.save(branchEntity).mapToBranch();
     }
 
