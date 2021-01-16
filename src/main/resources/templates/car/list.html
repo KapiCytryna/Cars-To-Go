@@ -9,6 +9,7 @@
 <h1>Lista samochodów</h1>
 <table>
     <tr>
+        <th>Id</th>
         <th>Marka</th>
         <th>Model</th>
         <th>Typ nadwozia</th>
@@ -20,6 +21,7 @@
         <th>Działanie</th>
     </tr>
     <tr th:each="car : ${carList}">
+        <td th:text="${car.id}"></td>
         <td th:text="${car.brand}"></td>
         <td th:text="${car.model}"></td>
         <td th:text="${car.body}"></td>

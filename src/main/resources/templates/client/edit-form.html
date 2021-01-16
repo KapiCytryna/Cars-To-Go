@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org" lang="">
+<head>
+    <meta charset="UTF-8">
+    <title>Formularz klienta</title>
+</head>
+<style>
+    label {
+        display: block;
+        margin: 10px 0;
+        overflow: hidden;
+    }
+    input {
+        float: right;
+        width: 150px;
+        margin: 0 0 0 5px;
+    }
+    select {
+        float: right;
+        width: 158px;
+        margin: 0 0 0 5px;
+    }
+    button {
+        display: block;
+        width: 50px;
+        margin: 20px auto 0 auto;
+    }
+    fieldset {
+        width: 400px;
+    }
+</style>
+<body>
+<h1>Formularz klienta</h1>
+<form th:object="${clientForm}" th:action="@{/client/edit/{id}(id=${clientForm.id})}" method="post">
+    <fieldset>
+        <label>Imię:
+            <input type="text" th:field="*{firstName}"/>
+        </label>
+        <br>
+        <label>Nazwisko:
+            <input type="text" th:field="*{lastName}"/>
+        </label>
+        <br>
+        <label>Email:
+            <input type="text" th:field="*{email}"/>
+        </label>
+        <br>
+        <label>Adres:
+            <input type="text" th:field="*{address}"/>
+        </label>
+        <br>
+        <input type="submit"/>
+    </fieldset>
+</form>
+</body>
+
+</html>
