@@ -1,5 +1,7 @@
 package pl.kab.carstogo.model;
 
+import pl.kab.carstogo.entity.ReturnEntity;
+
 import java.time.LocalDate;
 import java.util.Objects;
 
@@ -20,6 +22,10 @@ public class Return {
         this.reservation = reservation;
         this.surcharge = surcharge;
         this.remarks = remarks;
+    }
+
+    public ReturnEntity mapToReturnEntity() {
+        return new ReturnEntity(getEmployee().mapToEmployeeEntity(), getReturnDate(), getReservation().mapToReservationEntity(), getSurcharge(), getRemarks());
     }
 
     public Integer getId() {
