@@ -4,21 +4,30 @@ import pl.kab.carstogo.model.Employee;
 import pl.kab.carstogo.model.Reservation;
 import pl.kab.carstogo.model.Return;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import java.time.LocalDate;
 import java.util.Objects;
 
+@Entity
 public class ReturnEntity {
+    @Id
+    @GeneratedValue
     private Integer id;
-    private Employee employee;
+    @OneToOne
+    private EmployeeEntity employee;
     private LocalDate returnDate;
-    private Reservation reservation;
+    @OneToOne
+    private ReservationEntity reservation;
     private double surcharge;
     private String remarks;
 
     public ReturnEntity() {
     }
 
-    public ReturnEntity(Employee employee, LocalDate returnDate, Reservation reservation, double surcharge, String remarks) {
+    public ReturnEntity(EmployeeEntity employee, LocalDate returnDate, ReservationEntity reservation, double surcharge, String remarks) {
         this.employee = employee;
         this.returnDate = returnDate;
         this.reservation = reservation;
@@ -27,7 +36,7 @@ public class ReturnEntity {
     }
 
     public Return mapToReturn(){
-        Return return1 = new Return(employee, returnDate, reservation, surcharge, remarks);
+        Return return1 = new Return(employee.mapToEmployee(), returnDate, reservation.mapToReservation(), surcharge, remarks);
         return1.setId(id);
         return return1;
     }
@@ -40,11 +49,11 @@ public class ReturnEntity {
         this.id = id;
     }
 
-    public Employee getEmployee() {
+    public EmployeeEntity getEmployee() {
         return employee;
     }
 
-    public void setEmployee(Employee employee) {
+    public void setEmployee(EmployeeEntity employee) {
         this.employee = employee;
     }
 
@@ -56,11 +65,11 @@ public class ReturnEntity {
         this.returnDate = returnDate;
     }
 
-    public Reservation getReservation() {
+    public ReservationEntity getReservation() {
         return reservation;
     }
 
-    public void setReservation(Reservation reservation) {
+    public void setReservation(ReservationEntity reservation) {
         this.reservation = reservation;
     }
 

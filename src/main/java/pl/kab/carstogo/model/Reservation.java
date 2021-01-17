@@ -1,5 +1,7 @@
 package pl.kab.carstogo.model;
 
+import pl.kab.carstogo.entity.ReservationEntity;
+
 import java.time.LocalDate;
 import java.util.Objects;
 
@@ -26,6 +28,11 @@ public class Reservation {
         this.rentalBranch = rentalBranch;
         this.returnBranch = returnBranch;
         this.total = total;
+    }
+
+    public ReservationEntity mapToReservationEntity() {
+        return new ReservationEntity(getDate(), getClient().mapToClientEntity(), getCar().mapToCarEntity(), getStartDate()
+        , getEndDate(), getRentalBranch().mapToBranchEntity(), getReturnBranch().mapToBranchEntity(), getTotal());
     }
 
     public Integer getId() {

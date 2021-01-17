@@ -5,25 +5,32 @@ import pl.kab.carstogo.model.Car;
 import pl.kab.carstogo.model.Client;
 import pl.kab.carstogo.model.Reservation;
 
+import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.Objects;
 
+@Entity
 public class ReservationEntity {
+    @Id
+    @GeneratedValue
     private Integer id;
     private LocalDate date;
-    private Client client;
-    private Car car;
+    @OneToOne
+    private ClientEntity client;
+    @OneToOne
+    private CarEntity car;
     private LocalDate startDate;
     private LocalDate endDate;
-    private Branch rentalBranch;
-    private Branch returnBranch;
+    @OneToOne
+    private BranchEntity rentalBranch;
+    @OneToOne
+    private BranchEntity returnBranch;
     private Double total;
 
     public ReservationEntity() {
     }
 
-    public ReservationEntity(Integer id, LocalDate date, Client client, Car car, LocalDate startDate, LocalDate endDate, Branch rentalBranch, Branch returnBranch, Double total) {
-        this.id = id;
+    public ReservationEntity(LocalDate date, ClientEntity client, CarEntity car, LocalDate startDate, LocalDate endDate, BranchEntity rentalBranch, BranchEntity returnBranch, Double total) {
         this.date = date;
         this.client = client;
         this.car = car;
@@ -35,7 +42,7 @@ public class ReservationEntity {
     }
 
     public Reservation mapToReservation(){
-        Reservation reservation = new Reservation(date,client,car,startDate,endDate,rentalBranch,returnBranch,total);
+        Reservation reservation = new Reservation(date, client.mapToClient(), car.mapToCar(), startDate, endDate, rentalBranch.mapToBranch(), returnBranch.mapToBranch(), total);
         reservation.setId(id);
         return reservation;
     }
@@ -56,19 +63,19 @@ public class ReservationEntity {
         this.date = date;
     }
 
-    public Client getClient() {
+    public ClientEntity getClient() {
         return client;
     }
 
-    public void setClient(Client client) {
+    public void setClient(ClientEntity client) {
         this.client = client;
     }
 
-    public Car getCar() {
+    public CarEntity getCar() {
         return car;
     }
 
-    public void setCar(Car car) {
+    public void setCar(CarEntity car) {
         this.car = car;
     }
 
@@ -88,19 +95,19 @@ public class ReservationEntity {
         this.endDate = endDate;
     }
 
-    public Branch getRentalBranch() {
+    public BranchEntity getRentalBranch() {
         return rentalBranch;
     }
 
-    public void setRentalBranch(Branch rentalBranch) {
+    public void setRentalBranch(BranchEntity rentalBranch) {
         this.rentalBranch = rentalBranch;
     }
 
-    public Branch getReturnBranch() {
+    public BranchEntity getReturnBranch() {
         return returnBranch;
     }
 
-    public void setReturnBranch(Branch returnBranch) {
+    public void setReturnBranch(BranchEntity returnBranch) {
         this.returnBranch = returnBranch;
     }
 
