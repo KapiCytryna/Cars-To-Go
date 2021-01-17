@@ -1,0 +1,43 @@
+<div th:fragment="navbar">
+<nav class="navbar navbar-expand-md navbar-dark bg-dark">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="../../static/index.html">Cars To Go - Admin Panel</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" id="navbarDropdownBranch" role="button" data-bs-toggle="dropdown" aria-expanded="false">Oddział</a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownBranch">
+                        <a class="dropdown-item" href="../branch/list.html">Lista</a>
+                        <a class="dropdown-item" href="../branch/form.html">Nowy</a>
+                    </div>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" id="navbarDropdownEmployees" role="button" data-bs-toggle="dropdown" aria-expanded="false">Pracownik</a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownEmployees">
+                        <a class="dropdown-item" href="../employee/list.html">Lista</a>
+                        <a class="dropdown-item" href="../employee/form.html">Nowy</a>
+                    </div>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" id="navbarDropdownCar" role="button" data-bs-toggle="dropdown" aria-expanded="false">Pojazd</a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownEmployees">
+                        <a class="dropdown-item" href="../car/list.html">Lista</a>
+                        <a class="dropdown-item" href="../car/form.html">Nowy</a>
+                    </div>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" id="navbarDropdownClient" role="button" data-bs-toggle="dropdown" aria-expanded="false">Klient</a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownEmployees">
+                        <a class="dropdown-item" href="../client/list.html">Lista</a>
+                        <a class="dropdown-item" href="../client/form.html">Nowy</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<br>
+</div>
