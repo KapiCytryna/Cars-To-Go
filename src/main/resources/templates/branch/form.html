@@ -4,33 +4,16 @@
 <head>
     <meta charset="UTF-8">
     <title>Formularz samochodu</title>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
 </head>
-<style>
-    label {
-        display: block;
-        margin: 10px 0;
-        overflow: hidden;
-    }
-    input {
-        float: right;
-        width: 150px;
-        margin: 0 0 0 5px;
-    }
-    select {
-        float: right;
-        width: 158px;
-        margin: 0 0 0 5px;
-    }
-    button {
-        display: block;
-        width: 50px;
-        margin: 20px auto 0 auto;
-    }
-    fieldset {
-        width: 400px;
-    }
-</style>
 <body>
+
+<div th:replace="fragments/topnav :: navbar"></div>
+
 <h1>Formularz oddziału</h1>
 <form th:object="${branchForm}" action="/branch/add" method="post">
     <fieldset>
@@ -45,6 +28,9 @@
     <input type="submit"/>
     </fieldset>
 </form>
+
+<script src="../../static/js/jquery-3.5.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
 </body>
 
 </html>

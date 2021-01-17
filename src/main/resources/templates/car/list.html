@@ -4,39 +4,58 @@
 <head>
     <meta charset="UTF-8">
     <title>Lista samochodów</title>
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet"/>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.0.0/mdb.min.css" rel="stylesheet"/>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.23/css/jquery.dataTables.css">
+
 </head>
 <body>
 <h1>Lista samochodów</h1>
-<table>
-    <tr>
-        <th>Id</th>
-        <th>Marka</th>
-        <th>Model</th>
-        <th>Typ nadwozia</th>
-        <th>Rocznik</th>
-        <th>Kolor</th>
-        <th>Przebieg</th>
-        <th>Status</th>
-        <th>Kwota(za dzień wypożyczenia)</th>
-        <th>Działanie</th>
-    </tr>
-    <tr th:each="car : ${carList}">
-        <td th:text="${car.id}"></td>
-        <td th:text="${car.brand}"></td>
-        <td th:text="${car.model}"></td>
-        <td th:text="${car.body}"></td>
-        <td th:text="${car.productionYear}"></td>
-        <td th:text="${car.color}"></td>
-        <td th:text="${car.mileage}"></td>
-        <td th:text="${car.status}"></td>
-        <td th:text="${car.rent}"></td>
-        <td><a th:href="@{/car/edit/{id}(id=${car.id})}">Edycja</a>
-        <form th:action="@{/car/delete/{id}(id=${car.id})}" method="post">
-            <input type="submit" th:value="Usuń">
-        </form>
-        </td>
-    </tr>
+<table id="car_table" class="table table-striped" style="width:100%">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Marka</th>
+            <th>Model</th>
+            <th>Typ nadwozia</th>
+            <th>Rocznik</th>
+            <th>Kolor</th>
+            <th>Przebieg</th>
+            <th>Status</th>
+            <th>Kwota(za dzień wypożyczenia)</th>
+            <th>Działanie</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr th:each="car : ${carList}">
+            <td th:text="${car.id}"></td>
+            <td th:text="${car.brand}"></td>
+            <td th:text="${car.model}"></td>
+            <td th:text="${car.body}"></td>
+            <td th:text="${car.productionYear}"></td>
+            <td th:text="${car.color}"></td>
+            <td th:text="${car.mileage}"></td>
+            <td th:text="${car.status}"></td>
+            <td th:text="${car.rent}"></td>
+            <td>
+                <div class="btn-group" role="group">
+                    <button type="button" class="btn btn-outline-primary" th:href="@{/car/edit/{id}(id=${car.id})}">Edytuj</button>
+                    <button type="submit" class="btn btn-outline-primary" th:form="'form' + ${car.id}">Usuń</button>
+                </div>
+                <form th:action="@{/car/delete/{id}(id=${car.id})}" method="post" th:id="'form' + ${car.id}">
+                    <input type="hidden">
+                </form>
+            </td>
+        </tr>
+    </tbody>
 </table>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.0.0/mdb.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.23/js/jquery.dataTables.js"></script>
+
 </body>
 
 </html>

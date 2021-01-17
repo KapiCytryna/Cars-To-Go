@@ -4,31 +4,50 @@
 <head>
     <meta charset="UTF-8">
     <title>Lista oddziałów</title>
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet"/>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.0.0/mdb.min.css" rel="stylesheet"/>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.23/css/jquery.dataTables.css">
+
 </head>
 <body>
 <h1>Lista oddziałów</h1>
-<table>
-    <tr>
-        <th>Id</th>
-        <th>Miasto</th>
-        <th>Adres</th>
-        <th>Pracownicy</th>
-        <th>Samochody</th>
-        <th>Działanie</th>
-    </tr>
-    <tr th:each="branch : ${branchList}">
-        <td th:text="${branch.id}"></td>
-        <td th:text="${branch.city}"></td>
-        <td th:text="${branch.address}"></td>
-        <td th:text="${branch.employees.size}"></td>
-        <td th:text="${branch.cars.size}"></td>
-        <td><a th:href="@{/branch/edit/{id}(id=${branch.id})}">Edycja</a>
-        <form th:action="@{/branch/delete/{id}(id=${branch.id})}" method="post">
-            <input type="submit" th:value="Usuń">
-        </form>
-        </td>
-    </tr>
+<table id="bra_table" class="table table-striped" style="width:100%">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Miasto</th>
+            <th>Adres</th>
+            <th>Pracownicy</th>
+            <th>Samochody</th>
+            <th>Działanie</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr th:each="branch : ${branchList}">
+            <td th:text="${branch.id}"></td>
+            <td th:text="${branch.city}"></td>
+            <td th:text="${branch.address}"></td>
+            <td th:text="${branch.employees.size}"></td>
+            <td th:text="${branch.cars.size}"></td>
+            <td>
+                <div class="btn-group" role="group">
+                    <button type="button" class="btn btn-outline-primary" th:href="@{/branch/edit/{id}(id=${branch.id})}">Edytuj</button>
+                    <button type="submit" class="btn btn-outline-primary" th:form="'form' + ${branch.id}">Usuń</button>
+                </div>
+                <form th:action="@{/branch/delete/{id}(id=${branch.id})}" method="post" th:id="'form' + ${branch.id}">
+                    <input type="hidden">
+                </form>
+            </td>
+        </tr>
+    </tbody>
 </table>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.0.0/mdb.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.23/js/jquery.dataTables.js"></script>
+
 </body>
 
 </html>
