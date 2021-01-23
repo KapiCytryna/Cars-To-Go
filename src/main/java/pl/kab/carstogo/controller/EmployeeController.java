@@ -22,8 +22,8 @@ public class EmployeeController {
         return employeeService.findAll();
     }
 
-    @GetMapping("/id")
-    public Employee findById(@PathVariable final Integer id) {
+    @GetMapping("/{id}")
+    public Employee findById(@PathVariable("id") final Integer id) {
         return employeeService.findById(id);
     }
 
@@ -32,14 +32,14 @@ public class EmployeeController {
         return employeeService.addEmployee(employee);
     }
 
-  //  @DeleteMapping("/{id}")
-  //  public void deleteEmployee(@PathVariable("id") final Integer id) {
-  //      employeeService.remove(id);
-  //  }
+    @DeleteMapping("/{id}")
+    public void deleteEmployee(@PathVariable("id") final Integer id) {
+        employeeService.remove(id);
+    }
 
     @PutMapping("/{id}")
     public Employee updateEmployee(@PathVariable("id") final Integer id,
-                                   @RequestBody final Employee employee){
+                                   @RequestBody final CreateEmployeeCommand employee){
         return employeeService.updateEmployee(id, employee);
 
     }

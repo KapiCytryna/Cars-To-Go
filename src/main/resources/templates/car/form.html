@@ -14,53 +14,54 @@
 
 <div th:replace="fragments/topnav :: navbar"></div>
 
+<div class="container shadow-sm p-4 mb-4 bg-white">
 <h1>Formularz samochodu</h1>
-<form th:object="${carForm}" action="/car/add" method="post">
-    <fieldset>
-    <label>Marka:
-        <select name="brand">
-            <option th:each="brandOpt : ${T(pl.kab.carstogo.model.enums.Brand).values()}"
-                    th:value="${brandOpt}" th:text="${brandOpt}"></option>
-        </select>
-    </label>
-    <br>
-    <label>Model:
-        <input type="text" th:field="*{model}"/>
-    </label>
-    <br>
-    <label>Typ nadwozia:
-        <select name="body">
-            <option th:each="bodyTypeOpt : ${T(pl.kab.carstogo.model.enums.BodyType).values()}"
-                    th:value="${bodyTypeOpt}" th:text="${bodyTypeOpt}"></option>
-        </select>
-    </label>
-    <br>
-    <label>Rocznik:
-        <input type="number" th:field="*{productionYear}"/>
-    </label>
-    <br>
-    <label>Kolor:
-        <input type="text" th:field="*{color}"/>
-    </label>
-    <br>
-    <label>Przebieg:
-        <input type="number" th:field="*{mileage}"/>
-    </label>
-    <br>
-    <label>Status:
-        <select name="status">
-            <option th:each="statusOpt : ${T(pl.kab.carstogo.model.enums.Status).values()}"
-                    th:value="${statusOpt}" th:text="${statusOpt.getDisplayName()}"></option>
-        </select>
-    </label>
-    <br>
-    <label>Kwota(za dzień wypożyczenia):
-        <input type="number" th:field="*{rent}"/>
-    </label>
-    <br>
-    <input type="submit"/>
-    </fieldset>
+    <form th:object="${carForm}" action="/car/add" method="post">
+        <div class="form-group row">
+            <label for="inputBrand">Marka:</label>
+            <select id="inputBrand" name="brand">
+                <option th:each="brandOpt : ${T(pl.kab.carstogo.model.enums.Brand).values()}"
+                        th:value="${brandOpt}" th:text="${brandOpt}"></option>
+            </select>
+        </div>
+        <div class="form-group row">
+            <label for="inputModel">Model:</label>
+            <input id="inputModel" type="text" th:field="*{model}"/>
+        </div>
+        <div class="form-group row">
+            <label for="inputBodyType">Typ nadwozia:</label>
+            <select id="inputBodyType" name="body">
+                <option th:each="bodyTypeOpt : ${T(pl.kab.carstogo.model.enums.BodyType).values()}"
+                        th:value="${bodyTypeOpt}" th:text="${bodyTypeOpt}"></option>
+            </select>
+        </div>
+        <div class="form-group row">
+            <label for="inputProductionYear">Rocznik:</label>
+            <input id="inputProductionYear" type="number" th:field="*{productionYear}"/>
+        </div>
+        <div class="form-group row">
+            <label for="inputColor">Kolor:</label>
+            <input id="inputColor" type="text" th:field="*{color}"/>
+        </div>
+        <div class="form-group row">
+            <label for="inputMileage">Przebieg:</label>
+            <input id="inputMileage" type="number" th:field="*{mileage}"/>
+        </div>
+        <div class="form-group row">
+        <label for="inputStatus">Status:</label>
+            <select id="inputStatus" name="status">
+                <option th:each="statusOpt : ${T(pl.kab.carstogo.model.enums.Status).values()}"
+                        th:value="${statusOpt}" th:text="${statusOpt.getDisplayName()}"></option>
+            </select>
+        </div>
+        <div class="form-group row">
+            <label for="inputRent">Kwota(za dzień wypożyczenia):</label>
+            <input id="inputRent" type="number" th:field="*{rent}"/>
+        </div>
+        <br>
+        <button type="submit" class="btn btn-primary">Wyślij</button>
 </form>
+</div>
 
 <script src="../../static/js/jquery-3.5.1.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>

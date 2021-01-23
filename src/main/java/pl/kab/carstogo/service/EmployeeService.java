@@ -64,11 +64,12 @@ public class EmployeeService {
         return employeeRepository.findById(id).orElseThrow();
     }
 
-    public Employee updateEmployee(Integer id, Employee employee) {
+    public Employee updateEmployee(Integer id, CreateEmployeeCommand command) {
         EmployeeEntity employeeEntity = employeeRepository.findById(id).orElseThrow();
-        Optional.ofNullable(employee.getFirstName()).ifPresent(employeeEntity::setFirstName);
-        Optional.ofNullable(employee.getLastName()).ifPresent(employeeEntity::setLastName);
-        Optional.ofNullable(employee.getPosition()).ifPresent(employeeEntity::setPosition);
+        Optional.ofNullable(command.getFirstName()).ifPresent(employeeEntity::setFirstName);
+        Optional.ofNullable(command.getLastName()).ifPresent(employeeEntity::setLastName);
+        Optional.ofNullable(command.getPosition()).ifPresent(employeeEntity::setPosition);
+        Optional.ofNullable(branchRepository.findById(command.getBranchId()).orElseThrow()).ifPresent(employeeEntity::setBranch);
         employeeRepository.save(employeeEntity);
         return employeeEntity.mapToEmployee();
     }
