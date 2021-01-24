@@ -5,13 +5,15 @@
     <meta charset="UTF-8">
     <title>Lista samochodów</title>
 
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" rel="stylesheet"/>
-    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet"/>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.0.0/mdb.min.css" rel="stylesheet"/>
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.23/css/jquery.dataTables.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+
 
 </head>
 <body>
+
+<div th:replace="fragments/topnav :: navbar"></div>
+
 <h1>Lista samochodów</h1>
 <table id="car_table" class="table table-striped" style="width:100%">
     <thead>
@@ -37,11 +39,11 @@
             <td th:text="${car.productionYear}"></td>
             <td th:text="${car.color}"></td>
             <td th:text="${car.mileage}"></td>
-            <td th:text="${car.status}"></td>
+            <td th:text="${car.status.getDisplayName()}"></td>
             <td th:text="${car.rent}"></td>
             <td>
                 <div class="btn-group" role="group">
-                    <button type="button" class="btn btn-outline-primary" th:href="@{/car/edit/{id}(id=${car.id})}">Edytuj</button>
+                    <a role="button" class="btn btn-outline-primary" th:href="@{/car/edit/{id}(id=${car.id})}">Edytuj</a>
                     <button type="submit" class="btn btn-outline-primary" th:form="'form' + ${car.id}">Usuń</button>
                 </div>
                 <form th:action="@{/car/delete/{id}(id=${car.id})}" method="post" th:id="'form' + ${car.id}">
@@ -52,10 +54,8 @@
     </tbody>
 </table>
 
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.0.0/mdb.min.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.23/js/jquery.dataTables.js"></script>
-
+<script src="../../static/js/jquery-3.5.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
 </body>
 
 </html>

@@ -14,20 +14,21 @@
 
 <div th:replace="fragments/topnav :: navbar"></div>
 
+<div class="container shadow-sm p-4 mb-4 bg-white">
 <h1>Formularz oddziału</h1>
-<form th:object="${branchForm}" action="/branch/add" method="post">
-    <fieldset>
-    <label>Miasto:
-        <input type="text" th:field="*{city}"/>
-    </label>
-    <br>
-    <label>Adres:
-        <input type="text" th:field="*{address}"/>
-    </label>
-    <br>
-    <input type="submit"/>
-    </fieldset>
-</form>
+    <form th:object="${branchForm}" action="/branch/add" method="post">
+        <div class="form-group row">
+            <label for="inputCity">Miasto:</label>
+            <input id="inputCity" type="text" th:field="*{city}"/>
+        </div>
+        <div class="form-group row">
+            <label for="inputAddress">Adres:</label>
+            <input id="inputAddress" type="text" th:field="*{address}"/>
+        </div>
+        <br>
+        <button type="submit" class="btn btn-primary">Wyślij</button>
+    </form>
+</div>
 
 <script src="../../static/js/jquery-3.5.1.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>

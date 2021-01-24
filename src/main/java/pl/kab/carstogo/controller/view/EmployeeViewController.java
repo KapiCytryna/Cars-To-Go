@@ -4,7 +4,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import pl.kab.carstogo.model.Employee;
 import pl.kab.carstogo.model.command.CreateEmployeeCommand;
 import pl.kab.carstogo.service.EmployeeService;
 
@@ -39,12 +38,12 @@ public class EmployeeViewController {
 
     @GetMapping("/edit/{id}")
     public String editEmployeeForm(@PathVariable("id") Integer id, Model model) {
-        model.addAttribute("employeeForm", employeeService.findById(id));
+        model.addAttribute("employeeForm", employeeService.findEntityById(id).mapToEmployeeCom());
         return "employee/edit-form";
     }
 
     @PostMapping("/edit/{id}")
-    public String editEmployeeFormProcess(@ModelAttribute Employee employee, @PathVariable("id") Integer id) {
+    public String editEmployeeFormProcess(@ModelAttribute CreateEmployeeCommand employee, @PathVariable("id") Integer id) {
         employeeService.updateEmployee(id, employee);
         return "redirect:/employee/all";
     }

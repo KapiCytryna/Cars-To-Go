@@ -1,6 +1,7 @@
 package pl.kab.carstogo.entity;
 
 import pl.kab.carstogo.model.Employee;
+import pl.kab.carstogo.model.command.CreateEmployeeCommand;
 import pl.kab.carstogo.model.enums.Position;
 
 import javax.persistence.*;
@@ -26,6 +27,10 @@ public class EmployeeEntity {
         this.firstName = firstName;
         this.lastName = lastName;
         this.position = position;
+    }
+
+    public CreateEmployeeCommand mapToEmployeeCom() {
+        return new CreateEmployeeCommand(firstName,lastName,position, branch.getId());
     }
 
     public Employee mapToEmployee() {

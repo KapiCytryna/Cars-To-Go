@@ -4,55 +4,42 @@
 <head>
     <meta charset="UTF-8">
     <title>Formularz klienta</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
 </head>
-<style>
-    label {
-        display: block;
-        margin: 10px 0;
-        overflow: hidden;
-    }
-    input {
-        float: right;
-        width: 150px;
-        margin: 0 0 0 5px;
-    }
-    select {
-        float: right;
-        width: 158px;
-        margin: 0 0 0 5px;
-    }
-    button {
-        display: block;
-        width: 50px;
-        margin: 20px auto 0 auto;
-    }
-    fieldset {
-        width: 400px;
-    }
-</style>
+
 <body>
-<h1>Formularz klienta</h1>
-<form th:object="${clientForm}" th:action="@{/client/edit/{id}(id=${clientForm.id})}" method="post">
-    <fieldset>
-        <label>Imię:
-            <input type="text" th:field="*{firstName}"/>
-        </label>
+
+<div th:replace="fragments/topnav :: navbar"></div>
+
+<div class="container shadow-sm p-4 mb-4 bg-white">
+    <h1>Formularz edycji klienta</h1>
+    <form th:object="${clientForm}" th:action="@{/client/edit/{id}(id=${clientForm.id})}" method="post">
+        <div class="form-group row">
+            <label for="inputName">Imię:</label>
+            <input type="text" class="form-control" id="inputName" th:field="*{firstName}">
+        </div>
+        <div class="form-group row">
+            <label for="inputSurname">Nazwisko:</label>
+            <input type="text" class="form-control" id="inputSurname" th:field="*{lastName}"/>
+        </div>
+        <div class="form-group row">
+            <label for="inputEmail">Email:</label>
+            <input type="email" class="form-control" id="inputEmail" th:field="*{email}"/>
+        </div>
+        <div class="form-group row">
+            <label for="inputAddress">Adres:</label>
+            <input type="text" class="form-control" id="inputAddress" th:field="*{address}"/>
+        </div>
         <br>
-        <label>Nazwisko:
-            <input type="text" th:field="*{lastName}"/>
-        </label>
-        <br>
-        <label>Email:
-            <input type="text" th:field="*{email}"/>
-        </label>
-        <br>
-        <label>Adres:
-            <input type="text" th:field="*{address}"/>
-        </label>
-        <br>
-        <input type="submit"/>
-    </fieldset>
+        <button type="submit" class="btn btn-primary">Wyślij</button>
 </form>
+</div>
+
+<script src="../../static/js/jquery-3.5.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
 </body>
 
 </html>
