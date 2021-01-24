@@ -39,11 +39,11 @@
             <td th:text="${car.productionYear}"></td>
             <td th:text="${car.color}"></td>
             <td th:text="${car.mileage}"></td>
-            <td th:text="${car.status}"></td>
+            <td th:text="${car.status.getDisplayName()}"></td>
             <td th:text="${car.rent}"></td>
             <td>
                 <div class="btn-group" role="group">
-                    <button type="button" class="btn btn-outline-primary" th:href="@{/car/edit/{id}(id=${car.id})}">Edytuj</button>
+                    <a role="button" class="btn btn-outline-primary" th:href="@{/car/edit/{id}(id=${car.id})}">Edytuj</a>
                     <button type="submit" class="btn btn-outline-primary" th:form="'form' + ${car.id}">Usuń</button>
                 </div>
                 <form th:action="@{/car/delete/{id}(id=${car.id})}" method="post" th:id="'form' + ${car.id}">

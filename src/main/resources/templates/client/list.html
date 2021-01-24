@@ -35,7 +35,7 @@
             <td th:text="${client.email}"></td>
             <td>
                 <div class="btn-group" role="group">
-                    <button type="button" class="btn btn-outline-primary" th:href="@{/client/edit/{id}(id=${client.id})}">Edytuj</button>
+                    <a role="button" class="btn btn-outline-primary" th:href="@{/client/edit/{id}(id=${client.id})}">Edytuj</a>
                     <button type="submit" class="btn btn-outline-primary" th:form="'form' + ${client.id}">Usuń</button>
                 </div>
                 <form th:action="@{/client/delete/{id}(id=${client.id})}" method="post" th:id="'form' + ${client.id}">

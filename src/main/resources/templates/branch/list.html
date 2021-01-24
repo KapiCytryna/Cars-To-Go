@@ -35,7 +35,8 @@
             <td th:text="${branch.cars.size}"></td>
             <td>
                 <div class="btn-group" role="group">
-                    <button type="button" class="btn btn-outline-primary" th:href="@{/branch/edit/{id}(id=${branch.id})}">Edytuj</button>
+                    <a role="button" class="btn btn-outline-primary" th:href="@{/branch/{id}(id=${branch.id})}">Szczegóły</a>
+                    <a role="button" class="btn btn-outline-primary" th:href="@{/branch/edit/{id}(id=${branch.id})}">Edytuj</a>
                     <button type="submit" class="btn btn-outline-primary" th:form="'form' + ${branch.id}">Usuń</button>
                 </div>
                 <form th:action="@{/branch/delete/{id}(id=${branch.id})}" method="post" th:id="'form' + ${branch.id}">

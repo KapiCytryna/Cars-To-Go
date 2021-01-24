@@ -53,4 +53,16 @@ public class BranchViewController {
         branchService.remove(id);
         return "redirect:/branch/all";
     }
+
+    @GetMapping("/{id}")
+    public String getBranchDetails(@PathVariable("id") Integer id, final Model model) {
+        model.addAttribute("branchDetails", branchService.findByID(id));
+        return "branch/details";
+    }
+
+    @PostMapping("/{id}/add-car")
+    public String addCarToBranchProcess(@PathVariable("id") Integer id, @RequestParam("carId") Integer carId){
+        branchService.addCarToBranch(id,carId);
+        return "redirect:/branch/all";
+    }
 }
